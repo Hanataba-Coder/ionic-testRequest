@@ -1,0 +1,41 @@
+    
+@media (min-width: 0px){
+    .images{
+        column-count: 2;
+        margin-right: 16px;
+        margin-left: 16px;
+    }    
+}
+
+@media (min-width: 420px){
+    .images{
+        column-count: 3;
+    }    
+}
+@media (min-width: 720px){
+    .images{
+        column-count: 4;
+    }    
+}
+
+ion-row {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+ion-grid {
+    padding: 0px;
+}
+
+ion-col {
+    padding: 0px;
+}
+
+
+
+
+
+
+
+
+

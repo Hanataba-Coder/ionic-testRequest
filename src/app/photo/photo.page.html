@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>PHOTO</ion-title>
+    <!-- <ion-button (click)="changeClass()" >change class</ion-button> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-align-items-center" >
+      <ion-col  size="12" size-sm="4" size-md="3" size-xl="2" *ngFor="let photo of photos" (click)="onGoToDetail(photo)" >
+        <ion-img [src]="photo.urls.regular"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+  <!-- <div class="images">
+    <div class="ion-margin-vertical" *ngFor="let photo of photos" (click)="onGoToDetail(photo)" >
+      <ion-img [src]="photo.urls.thumb"></ion-img>
+    </div>
+  </div> -->
+
+  <ion-infinite-scroll threshold="20%" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="dots"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+<!-- size="6" size-md="4" size-xl="2"  -->

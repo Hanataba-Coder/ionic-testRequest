@@ -1,0 +1,124 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/photo" ></ion-back-button>
+    </ion-buttons>
+    <ion-title>photo-detail</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+
+  <ion-fab vertical="top" horizontal="start" slot="fixed" style="margin-left: 0px;" routerDirection="back">
+    <ion-button fill="clear" size="small" expand="block" (click)="goBack()" >
+      <ion-icon color="dark" name="chevron-back-outline" style="zoom: 2.0;" class="ion-align-items-start"></ion-icon>
+    </ion-button>
+  </ion-fab>
+
+  <ion-img [src]="photoDetail.urls.regular"></ion-img>
+  <ion-img></ion-img>
+  <div class="content-padding" >
+    <div style="margin-left: 10px;" >
+      <ion-row class="ion-align-items-center" >
+        <ion-avatar >
+          <ion-img [src]="photoDetail.user.profile_image.medium" ></ion-img>
+          <!-- <ion-img></ion-img> -->
+        </ion-avatar> &nbsp;&nbsp;
+        <ion-label style="font-weight: bold;">{{photoDetail.user.name}}</ion-label>
+        <!-- <ion-label>username</ion-label> -->
+      </ion-row>
+      <ion-row class="ion-align-items-center" style="margin-top: 10px;">
+        <ion-label style="font-weight: bold;">Info</ion-label>
+      </ion-row>
+  
+      <ion-row class="ion-align-items-center" style="font-size: small;" >
+        <ion-label>publish on </ion-label>&nbsp;<ion-label>{{createdAt}}</ion-label>
+      </ion-row>
+    </div>
+    
+    <!-- download and views  -->
+    <ion-row class="ion-text-center" style="margin-top: 20px;" >
+      <ion-col size="6">
+        <ion-icon name="arrow-down-outline"></ion-icon>&nbsp;<ion-label style="font-weight: bold;">Downloads</ion-label><br>
+        <!-- {{20000 | number: 0}} -->
+        {{photoDetail.downloads | number: 0}}
+      </ion-col>
+      <ion-col size="6">
+        <ion-icon name="eye-outline"></ion-icon>&nbsp;<ion-label style="font-weight: bold;">Views</ion-label><br>
+        {{photoDetail.views | number: 0}}
+      </ion-col>
+    </ion-row>
+
+    <div style="border-style: solid; border-width: 0.5px; margin-top: 10px;"></div>
+  
+    <!-- camera specification -->
+    <ion-row class="ion-text-center" style="margin-top: 10px;" >
+      <ion-col size="4">
+        <!-- Make -->
+        <ion-label style="font-weight: bold;">Camera Make</ion-label><br><br>
+        <div *ngIf="photoDetail.exif.make; else nothing">
+          {{photoDetail.exif.make}}
+        </div>
+        <ng-template #nothing>-</ng-template>
+        
+      </ion-col>
+
+      <ion-col size="4">
+        <!-- Model -->
+        <ion-label style="font-weight: bold;">Camera Model</ion-label><br><br>
+        <div *ngIf="photoDetail.exif.model; else nothing">
+          {{photoDetail.exif.model}}
+        </div>
+        <ng-template #nothing>-</ng-template>
+        
+      </ion-col>
+
+      <ion-col size="4">
+        <!-- focal length -->
+        <ion-label style="font-weight: bold;">Focal Length</ion-label><br><br>
+        <div *ngIf="photoDetail.exif.focal_length; else nothing">
+          {{photoDetail.exif.focal_length}}
+        </div>
+        <ng-template #nothing>-</ng-template>
+        
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row class="ion-text-center" style="margin-top: 10px;" >
+      
+      <ion-col size="4">
+        <!-- aperture -->
+        <ion-label style="font-weight: bold;">Aperture</ion-label><br><br>
+        <div *ngIf="photoDetail.exif.aperture; else nothing">
+          f/{{photoDetail.exif.aperture}}
+        </div>
+        <ng-template #nothing>-</ng-template>
+      </ion-col>
+
+      <ion-col size="4">
+        <!-- Shutter Speed -->
+        <ion-label style="font-weight: bold;">Shutter Speed</ion-label><br><br>
+        <div *ngIf="photoDetail.exif.exposure_time; else nothing">
+
+          {{photoDetail.exif.exposure_time}}s
+        </div>
+        <ng-template #nothing>-</ng-template>
+      </ion-col>
+
+      <ion-col size="4">
+        <!-- ISO -->
+        <ion-label style="font-weight: bold;">ISO</ion-label><br><br>
+        <div *ngIf="photoDetail.exif.iso; else nothing">
+          {{photoDetail.exif.iso}}
+        </div>
+        <ng-template #nothing>-</ng-template>
+      </ion-col>
+
+    </ion-row>
+    
+  </div>
+  
+        
+      
+</ion-content>
